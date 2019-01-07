@@ -1,4 +1,4 @@
-FROM markhobson/docker-maven-chrome
+FROM markhobson/maven-chrome
 
 # See https://github.com/jenkinsci/docker-slave/blob/master/Dockerfile
 ARG VERSION=3.28
