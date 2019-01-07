@@ -1,4 +1,4 @@
-FROM markhobson/docker-maven-chrome
+FROM markhobson/maven-chrome
 
 USER root
 
