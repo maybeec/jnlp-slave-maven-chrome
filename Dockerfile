@@ -26,4 +26,6 @@ VOLUME /home/${user}/.jenkins
 VOLUME ${AGENT_WORKDIR}
 WORKDIR /home/${user}
 
-ENTRYPOINT ["/usr/share/jenkins/slave.jar"]
+RUN /usr/local/bin/mvn-entrypoint.sh
+
+ENTRYPOINT ["java","-jar","/usr/share/jenkins/slave.jar"]
