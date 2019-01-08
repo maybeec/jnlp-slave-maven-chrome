@@ -2,6 +2,8 @@ FROM jenkins/jnlp-slave:latest
 
 # Maven
 
+USER root
+
 ARG MAVEN_VERSION=3.5.4
 ARG USER_HOME_DIR="/home/jenkins"
 ARG SHA=fae9c12b570c3ba18116a4e26ea524b29f7279c17cbaadc3326ca72927368924d9131d11b9e851b8dc9162228b6fdea955446be41207a5cfc61283dd8a561d2f
@@ -23,7 +25,6 @@ COPY settings-docker.xml /usr/share/maven/ref/
 #ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 CMD ["mvn"]
 
-
 # Google Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
@@ -42,5 +43,7 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
   && mv /opt/chromedriver /opt/chromedriver-$CHROME_DRIVER_VERSION \
   && chmod 755 /opt/chromedriver-$CHROME_DRIVER_VERSION \
   && ln -fs /opt/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+
+USER jenkins
 
 ENTRYPOINT ["jenkins-slave"]
