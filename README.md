@@ -9,4 +9,4 @@ Includes:
     Maven 3.5.4
     Chrome (latest)
 
-Available on Docker Hub.
+Available on [Docker Hub](https://hub.docker.com/r/maybeec/jnlp-slave-maven-chrome).
